@@ -1,25 +1,12 @@
 # pawpad-rails
 Rails API for PawPad
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Local Development Instructions
 
-Things you may want to cover:
+1. Docker MySQL Guide: https://hub.docker.com/_/mysql
 
-* Ruby version
+2. Docker-Compose: https://medium.com/@chrischuck35/how-to-create-a-mysql-instance-with-docker-compose-1598f3cc1bee
 
-* System dependencies
+3. From pawpad-rails root: `docker-compose up -d`
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+4. MySQL Workbench - connect to DB (credentials in docker-compose.yaml)
