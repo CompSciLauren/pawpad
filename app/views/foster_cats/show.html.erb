@@ -1,0 +1,9 @@
+<h1><%= @foster_cat.name %></h1>
+
+<%= link_to "Back", foster_cats_path %>
+<br />
+<br />
+<%= link_to "Edit", edit_foster_cat_path(@foster_cat) %>
+<br />
+<br />
+<%= button_to "Delete", @foster_cat, method: :delete, data: { turbo_confirm: "Are you sure?" } %>

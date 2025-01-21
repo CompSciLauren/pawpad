@@ -1,0 +1,33 @@
+<%= form_with model: foster_cat do |form| %>
+  <% @form_fields.each do |field| %>
+    <div class="field">
+      <%= form.label field %>
+      <%= form.text_field field, value: @foster_cat[field] %>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :sex, "Select Sex of Cat" %>
+    <%= form.select :sex, @animal_sexes.map { |animal_sex| [animal_sex.sex_description, animal_sex.id] }, { include_blank: "Cat Sexes" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :breed, "Select a Cat Breed" %>
+    <%= form.select :breed, @cat_breeds.map { |cat_breed| [cat_breed.breed, cat_breed.id] }, { include_blank: "Cat Breeds" } %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cat_colors, "Select Cat Colors" %>
+    <% if @cat_colors.any? %>
+      <%= form.select :color_ids, @cat_colors.map { |cat_color| [cat_color.color, cat_color.id] }, {}, { multiple: true, size: 7 } %>
+    <% else %>
+      <p>No colors available</p>
+    <% end %>
+  </div>
+
+  <br />
+  
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

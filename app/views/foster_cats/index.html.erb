@@ -1,0 +1,12 @@
+<h1>My Foster Cats</h1>
+
+<%= link_to "Add New Foster Cat", new_foster_cat_path %>
+<br />
+<br />
+<div id="foster_cats">
+    <% @foster_cats.each do |foster_cat| %>
+        <div>
+            <%= link_to foster_cat.name, foster_cat %>
+        </div>
+    <% end %>
+</div>
