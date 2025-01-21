@@ -1,0 +1,20 @@
+version: '3.3'
+services:
+  db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_DB: 'pawpad_development'
+      POSTGRES_USER: 'pawpad'
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      # <Port exposed> : <PostgreSQL Port running inside container>
+      - '5432:5432'
+    expose:
+      # Opens port 5432 on the container
+      - '5432'
+    volumes:
+      - local-db:/var/lib/postgresql/data
+# Names our volume
+volumes:
+  local-db:

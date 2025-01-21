@@ -7,3 +7,6 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+AnimalSex.find_or_create_by(id: 1, sex: 'M', sex_description: 'Male')
+AnimalSex.find_or_create_by(id: 2, sex: 'F', sex_description: 'Female')
+AnimalSex.find_or_create_by(id: 3, sex: 'U', sex_description: 'Unknown')

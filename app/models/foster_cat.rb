@@ -1,5 +1,4 @@
-class FosterCat < ActiveRecord::Base
-    self.table_name = "foster_cat_vw"
-    self.primary_key = "id"
+class FosterCat < ApplicationRecord
+  validates :sex_id, presence: true
+  validates :breed_id, presence: true
 end
-  

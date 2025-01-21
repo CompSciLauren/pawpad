@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+male:
+  sex: M
+  sex_description: Male
+
+female:
+  sex: F
+  sex_description: Female
+
+unknown:
+  sex: U
+  sex_description: Unknown
