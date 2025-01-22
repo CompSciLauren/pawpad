@@ -1,33 +1,34 @@
-<%= form_with model: foster_cat do |form| %>
+<%= form_with model: foster_cat, local: true, class: "needs-validation" do |form| %>
   <% @form_fields.each do |field| %>
-    <div class="field">
-      <%= form.label field %>
-      <%= form.text_field field, value: @foster_cat[field] %>
+    <div class="mb-3">
+      <%= form.label field, class: "form-label" %>
+      <%= form.text_field field, value: @foster_cat[field], class: "form-control", placeholder: "Enter #{field.to_s.humanize.downcase}" %>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :sex, "Select Sex of Cat" %>
-    <%= form.select :sex, @animal_sexes.map { |animal_sex| [animal_sex.sex_description, animal_sex.id] }, { include_blank: "Cat Sexes" } %>
+  <div class="mb-3">
+    <%= form.label :sex, "Select Sex of Cat", class: "form-label" %>
+    <%= form.select :sex, @animal_sexes.map { |animal_sex| [animal_sex.sex_description, animal_sex.id] }, 
+                    { include_blank: "Cat Sexes" }, class: "form-select" %>
   </div>
 
-  <div class="field">
-    <%= form.label :breed, "Select a Cat Breed" %>
-    <%= form.select :breed, @cat_breeds.map { |cat_breed| [cat_breed.breed, cat_breed.id] }, { include_blank: "Cat Breeds" } %>
+  <div class="mb-3">
+    <%= form.label :breed, "Select a Cat Breed", class: "form-label" %>
+    <%= form.select :breed, @cat_breeds.map { |cat_breed| [cat_breed.breed, cat_breed.id] }, 
+                    { include_blank: "Cat Breeds" }, class: "form-select" %>
   </div>
 
-  <div class="field">
-    <%= form.label :cat_colors, "Select Cat Colors" %>
+  <div class="mb-3">
+    <%= form.label :cat_colors, "Select Cat Colors", class: "form-label" %>
     <% if @cat_colors.any? %>
-      <%= form.select :color_ids, @cat_colors.map { |cat_color| [cat_color.color, cat_color.id] }, {}, { multiple: true, size: 7 } %>
+      <%= form.select :color_ids, @cat_colors.map { |cat_color| [cat_color.color, cat_color.id] }, {}, 
+                      { multiple: true, size: 7, class: "form-select" } %>
     <% else %>
-      <p>No colors available</p>
+      <p class="text-muted">No colors available</p>
     <% end %>
   </div>
 
-  <br />
-  
-  <div>
-    <%= form.submit %>
+  <div class="d-grid">
+    <%= form.submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>
