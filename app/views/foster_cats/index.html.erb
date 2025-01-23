@@ -1,13 +1,32 @@
-<h1>Foster Cats</h1>
+<h1>All Foster Cats</h1>
 
-<%= link_to "Add New Foster Cat", new_foster_cat_path %>
-<br />
-<br />
+<%= link_to "Add New Foster Cat", new_foster_cat_path, class: "btn btn-primary mb-3" %>
+
 <div id="foster_cats">
     <h2>My Foster Cats</h2>
-    <% @foster_cats.each do |foster_cat| %>
-        <div>
-            <%= link_to foster_cat.name, foster_cat %>
-        </div>
-    <% end %>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Birth Date</th>
+                <th>Sex</th>
+                <th>Breed</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @foster_cats.each do |foster_cat| %>
+                <tr>
+                    <td><%= link_to foster_cat.name, foster_cat %></td>
+                    <td><%= foster_cat.birth_date %></td>
+                    <td><%= foster_cat.sex_id %></td>
+                    <td><%= foster_cat.breed_id %></td>
+                    <td>
+                        <%= link_to "Edit", edit_foster_cat_path(foster_cat), class: "btn btn-sm btn-warning" %>
+                        <%= link_to "Delete", foster_cat, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+                    </td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
 </div>
