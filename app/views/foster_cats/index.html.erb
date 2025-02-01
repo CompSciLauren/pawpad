@@ -11,19 +11,23 @@
                 <th>Birth Date</th>
                 <th>Sex</th>
                 <th>Breed</th>
+                <th>Birth Date</th>
+                <th>Colors</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <% @foster_cats.each do |foster_cat| %>
                 <tr>
-                    <td><%= link_to foster_cat.name, foster_cat %></td>
+                    <td><%= link_to foster_cat.name, foster_cat_path(foster_cat.id) %></td>
                     <td><%= foster_cat.birth_date %></td>
-                    <td><%= foster_cat.sex_id %></td>
-                    <td><%= foster_cat.breed_id %></td>
+                    <td><%= foster_cat.sex %></td>
+                    <td><%= foster_cat.breed %></td>
+                    <td><%= foster_cat.birth_date %></td>
+                    <td><%= foster_cat.colors %></td>
                     <td>
                         <%= link_to "Edit", edit_foster_cat_path(foster_cat), class: "btn btn-sm btn-warning" %>
-                        <%= link_to "Delete", foster_cat, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+                        <%= link_to "Delete", foster_cat_path(foster_cat.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
                     </td>
                 </tr>
             <% end %>

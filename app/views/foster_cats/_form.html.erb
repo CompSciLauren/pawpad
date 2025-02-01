@@ -8,21 +8,25 @@
 
   <div class="mb-3">
     <%= form.label :sex, "Select Sex of Cat", class: "form-label" %>
-    <%= form.select :sex, @animal_sexes.map { |animal_sex| [animal_sex.sex_description, animal_sex.id] }, 
+    <%= form.select :sex_id, @animal_sexes.map { |animal_sex| [animal_sex.sex_description, animal_sex.id] }, 
                     { include_blank: "Cat Sexes" }, class: "form-select" %>
   </div>
 
   <div class="mb-3">
     <%= form.label :breed, "Select a Cat Breed", class: "form-label" %>
-    <%= form.select :breed, @cat_breeds.map { |cat_breed| [cat_breed.breed, cat_breed.id] }, 
-                    { include_blank: "Cat Breeds" }, class: "form-select" %>
+    <%= form.select :breed_id, 
+                    @cat_breeds.map { |cat_breed| [cat_breed.breed, cat_breed.id] }, 
+                    { selected: @foster_cat.breed_id, include_blank: "Cat Breeds" }, 
+                    class: "form-select" %>
   </div>
 
   <div class="mb-3">
     <%= form.label :cat_colors, "Select Cat Colors", class: "form-label" %>
     <% if @cat_colors.any? %>
-      <%= form.select :color_ids, @cat_colors.map { |cat_color| [cat_color.color, cat_color.id] }, {}, 
-                      { multiple: true, size: 7, class: "form-select" } %>
+      <%= form.select :color_ids, 
+                      @cat_colors.map { |cat_color| [cat_color.color, cat_color.id] }, 
+                      { selected: @foster_cat.foster_cat_colors.map(&:color_id), multiple: true, size: 7 }, 
+                      class: "form-select" %>
     <% else %>
       <p class="text-muted">No colors available</p>
     <% end %>
