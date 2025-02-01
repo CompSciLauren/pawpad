@@ -1,7 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  relationship: MyString
+mother:
+  relationship: Mother
 
-two:
-  relationship: MyString
+father:
+  relationship: Father
+
+child:
+  relationship: Child
+
+sibling:
+  relationship: Sibling
+
+friend:
+  relationship: Friend
+
+nemesis:
+  relationship: Nemesis

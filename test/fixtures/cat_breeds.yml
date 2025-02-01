@@ -1,9 +1,29 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+domesticShorthair:
   id: 1
-  breed: MyString
+  breed: Domestic Shorthair
 
-two:
-  id: 1
-  breed: MyString
+domesticMediumhair:
+  id: 2
+  breed: Domestic Mediumhair
+
+domesticLonghair:
+  id: 3
+  breed: Domestic Longhair
+
+mainecoon:
+  id: 4
+  breed: Maine Coon
+
+siamese:
+  id: 5
+  breed: Siamese
+
+russianblue:
+  id: 6
+  breed: Russian Blue
+
+manx:
+  id: 7
+  breed: Manx

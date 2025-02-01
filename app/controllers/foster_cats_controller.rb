@@ -75,9 +75,7 @@ class FosterCatsController < ApplicationController
     FosterCatColor.where(cat_id: foster_cat_id, color_id: colors_to_delete).destroy_all
 
     colors_to_add = cat_color_ids.map(&:to_i) - existing_colors
-    p "colors_to_add: #{colors_to_add}"
     colors_to_add.each do |color_id|
-      p "adding color: #{color_id} for #{foster_cat_id}"
       FosterCatColor.create(cat_id: foster_cat_id, color_id: color_id)
     end
   end

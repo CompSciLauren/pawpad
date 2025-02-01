@@ -1,9 +1,41 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+black:
   id: 1
-  color: MyString
+  color: Black
 
-two:
-  id: 1
-  color: MyString
+white:
+  id: 2
+  color: White
+
+gray:
+  id: 3
+  color: Gray
+
+orange:
+  id: 4
+  color: Orange
+
+cream:
+  id: 5
+  color: Cream
+
+brown:
+  id: 6
+  color: Brown
+
+lightbrown:
+  id: 7
+  color: Light Brown
+
+calico:
+  id: 8
+  color: Calico (white, orange, black)
+
+tabby:
+  id: 9
+  color: Tabby
+
+tortoiseshell:
+  id: 10
+  color: Tortoiseshell (black, orange)

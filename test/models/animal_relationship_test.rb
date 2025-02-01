@@ -1,7 +1,8 @@
 require "test_helper"
 
 class AnimalRelationshipTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should not save an empty record" do
+    animal_relationship = AnimalRelationship.new
+    assert_not animal_relationship.save
+  end
 end

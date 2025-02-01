@@ -1,13 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
+  name: Tucker
   sex_id: 1
   breed_id: 1
-  birth_date: 2025-01-20
-
-two:
-  name: MyString
-  sex_id: 1
-  breed_id: 1
-  birth_date: 2025-01-20
+  birth_date: 2021-04-01
