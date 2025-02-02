@@ -25,7 +25,9 @@
                     <td><%= foster_cat.colors %></td>
                     <td>
                         <%= link_to "Edit", edit_foster_cat_path(foster_cat), class: "btn btn-sm btn-warning" %>
-                        <%= link_to "Delete", foster_cat_path(foster_cat.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
+                        <br />
+                        <br />
+                        <%= button_to "Delete", foster_cat_path(foster_cat.id), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn-sm btn-danger" %>
                     </td>
                 </tr>
             <% end %>
