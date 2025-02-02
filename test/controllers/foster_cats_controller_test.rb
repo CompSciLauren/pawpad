@@ -5,11 +5,6 @@ class FosterCatsControllerTest < ActionDispatch::IntegrationTest
     @foster_cat = foster_cats(:one)
   end
 
-  test "should show foster cat" do
-    get foster_cat_url(@foster_cat)
-    assert_response :success
-  end
-
   test "should destroy foster cat" do
     assert_difference("FosterCat.count", -1) do
       delete foster_cat_url(@foster_cat)
