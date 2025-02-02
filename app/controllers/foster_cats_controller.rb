@@ -1,5 +1,5 @@
 class FosterCatsController < ApplicationController
-  before_action :set_foster_cat, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_foster_cat, only: [ :edit, :update, :destroy ]
   before_action :set_form_fields_and_resources, only: [ :new, :create, :edit ]
 
   def index
@@ -7,6 +7,7 @@ class FosterCatsController < ApplicationController
   end
 
   def show
+    @foster_cat = VwFosterCat.find_by(id: params[:id])
   end
 
   def new
