@@ -12,7 +12,10 @@ class FosterCatTest < ActiveSupport::TestCase
         "name": "Tucker",
         "sex_id": 1,
         "breed_id": 1,
-        "birth_date": "2021-04-01"
+        "birth_date": "2021-04-01",
+        "foster_cat_colors_attributes": [
+          { "color_id": 1 } # Make sure you have a valid color_id in your database
+        ]
       }
     )
 

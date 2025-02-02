@@ -1,5 +1,7 @@
 class FosterCatsController < ApplicationController
   before_action :set_foster_cat, only: [ :show, :edit, :update, :destroy ]
+  before_action :set_form_fields_and_resources, only: [ :new, :create, :edit ]
+
   def index
     @foster_cats = VwFosterCat.all
   end
@@ -9,33 +11,24 @@ class FosterCatsController < ApplicationController
 
   def new
     @foster_cat = FosterCat.new
-    @form_fields = VwFosterCat.columns.map(&:name).reject { |field| [ "id", "sex", "breed", "colors" ].include?(field) }
-    @animal_sexes = AnimalSex.all
-    @cat_breeds = CatBreed.all
-    @cat_colors = CatColor.all.presence || []
   end
 
   def create
-    @foster_cat = FosterCat.new(foster_cat_params.except(:color_ids))
-    if @foster_cat.save
-      save_foster_cat_colors(@foster_cat.id, foster_cat_params[:color_ids])
-
+    @foster_cat = FosterCat.new(foster_cat_params.except(:foster_cat_colors))
+    if @foster_cat.foster_cat_colors.build(foster_cat_colors_params) && @foster_cat.save
       redirect_to @foster_cat
     else
+      flash.now[:alert] = "There was an error saving the foster cat. Please review the form."
       render :new, status: :unprocessable_entity
     end
   end
 
   def edit
-    @form_fields = VwFosterCat.columns.map(&:name).reject { |field| [ "id", "sex", "breed", "colors" ].include?(field) }
-    @animal_sexes = AnimalSex.all
-    @cat_breeds = CatBreed.all
-    @cat_colors = CatColor.all.presence || []
   end
 
   def update
-    if @foster_cat.update(foster_cat_params.except(:color_ids))
-      save_foster_cat_colors(@foster_cat.id, foster_cat_params[:color_ids])
+    if @foster_cat.update(foster_cat_params.except(:foster_cat_colors))
+      save_foster_cat_colors(@foster_cat.id, foster_cat_params[:foster_cat_colors])
 
       redirect_to @foster_cat
     else
@@ -55,15 +48,28 @@ class FosterCatsController < ApplicationController
     @foster_cat = FosterCat.find(params[:id])
   end
 
+  def set_form_fields_and_resources
+    @form_fields = VwFosterCat.columns.map(&:name).reject { |field| [ "id", "sex", "breed", "colors" ].include?(field) }
+    @animal_sexes = AnimalSex.all
+    @cat_breeds = CatBreed.all
+    @cat_colors = CatColor.all.presence || []
+  end
+
   def foster_cat_params
-    permitted_params = params.require(:foster_cat).permit(:name, :birth_date, :sex_id, :sex, :breed_id, :breed, color_ids: [])
+    permitted_params = params.require(:foster_cat).permit(:name, :birth_date, :sex_id, :sex, :breed_id, :breed, foster_cat_colors: [])
 
     permitted_params[:sex_id] = permitted_params.delete(:sex) if permitted_params[:sex]
     permitted_params[:breed_id] = permitted_params.delete(:breed) if permitted_params[:breed]
 
-    permitted_params[:color_ids].reject!(&:blank?) if permitted_params[:color_ids]
+    permitted_params[:foster_cat_colors].reject!(&:blank?) if permitted_params[:foster_cat_colors]
 
     permitted_params
+  end
+
+  def foster_cat_colors_params
+    foster_cat_params[:foster_cat_colors].map do |color_id|
+      { color_id: color_id }
+    end
   end
 
   def save_foster_cat_colors(foster_cat_id, color_ids)

@@ -3,6 +3,9 @@
     <div class="mb-3">
       <%= form.label field, class: "form-label" %>
       <%= form.text_field field, value: @foster_cat[field], class: "form-control", placeholder: "Enter #{field.to_s.humanize.downcase}" %>
+      <% if field == "name" && @foster_cat.errors[:name].any? %>
+        <div class="text-danger"><%= @foster_cat.errors[:name].join(", ") %></div>
+      <% end %>
     </div>
   <% end %>
 
@@ -10,6 +13,9 @@
     <%= form.label :sex, "Select Sex of Cat", class: "form-label" %>
     <%= form.select :sex_id, @animal_sexes.map { |animal_sex| [animal_sex.sex_description, animal_sex.id] }, 
                     { include_blank: "Cat Sexes" }, class: "form-select" %>
+    <% if @foster_cat.errors[:sex_id].any? %>
+      <div class="text-danger"><%= @foster_cat.errors[:sex_id].join(", ") %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
@@ -18,15 +24,22 @@
                     @cat_breeds.map { |cat_breed| [cat_breed.breed, cat_breed.id] }, 
                     { selected: @foster_cat.breed_id, include_blank: "Cat Breeds" }, 
                     class: "form-select" %>
+    <% if @foster_cat.errors[:breed_id].any? %>
+      <div class="text-danger"><%= @foster_cat.errors[:breed_id].join(", ") %></div>
+    <% end %>
   </div>
 
   <div class="mb-3">
-    <%= form.label :cat_colors, "Select Cat Colors", class: "form-label" %>
+    <%= form.label :cat_colors, "Select Cat Color(s)", class: "form-label" %>
     <% if @cat_colors.any? %>
-      <%= form.select :color_ids, 
+      <%= form.select :foster_cat_colors, 
                       @cat_colors.map { |cat_color| [cat_color.color, cat_color.id] }, 
                       { selected: @foster_cat.foster_cat_colors.map(&:color_id), multiple: true, size: 7 }, 
                       class: "form-select" %>
+
+      <% if @foster_cat.errors[:foster_cat_colors].any? %>
+        <div class="text-danger"><%= @foster_cat.errors[:foster_cat_colors].join(", ") %></div>
+      <% end %>
     <% else %>
       <p class="text-muted">No colors available</p>
     <% end %>
