@@ -37,7 +37,7 @@ class FosterCatTest < ActiveSupport::TestCase
     )
 
     assert_not foster_cat.save
-    assert_includes foster_cat.errors[:set_id], "Error: Enter a set number."
+    assert_includes foster_cat.errors[:set_id], "Enter a set number"
   end
 
   test "should not save with negative set_id" do
@@ -55,7 +55,7 @@ class FosterCatTest < ActiveSupport::TestCase
     )
 
     assert_not foster_cat.save
-    assert_includes foster_cat.errors[:set_id], "Error: Set number must be a positive integer."
+    assert_includes foster_cat.errors[:set_id], "Must be a positive number"
   end
 
   test "should not save with zero set_id" do
@@ -73,7 +73,7 @@ class FosterCatTest < ActiveSupport::TestCase
     )
 
     assert_not foster_cat.save
-    assert_includes foster_cat.errors[:set_id], "Error: Set number must be a positive integer."
+    assert_includes foster_cat.errors[:set_id], "Must be a positive number"
   end
 
   test "should not save with non-integer set_id" do
@@ -91,6 +91,6 @@ class FosterCatTest < ActiveSupport::TestCase
     )
 
     assert_not foster_cat.save
-    assert_includes foster_cat.errors[:set_id], "Error: Set number must be a positive integer."
+    assert_includes foster_cat.errors[:set_id], "Must be a positive number"
   end
 end

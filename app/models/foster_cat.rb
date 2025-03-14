@@ -5,7 +5,7 @@ class FosterCat < ApplicationRecord
   accepts_nested_attributes_for :foster_cat_colors
 
   validates :set_id, presence: { message: "Enter a set number" },
-                    numericality: { only_integer: true, greater_than: 0, message: "Must be a positive number", if: :set_id? }
+                    numericality: { only_integer: true, greater_than: 0, message: "Must be a positive number" }
   validates :name, presence: { message: "Error: Add a name. Hint: You can use a placeholder like \"Kitten 1\" and update it later." }
   validates :sex_id, presence: { message: "Error: Select a sex." }
   validates :breed_id, presence: { message: "Error: Select a breed." }
