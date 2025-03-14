@@ -4,6 +4,7 @@ class CreateVwFosterCats < ActiveRecord::Migration[8.0]
       CREATE VIEW vw_foster_cats AS
       SELECT
         fc.id,
+        fc.set_id,
         fc.name,
         asr.sex,
         cb.breed,
@@ -15,7 +16,7 @@ class CreateVwFosterCats < ActiveRecord::Migration[8.0]
       JOIN cat_breeds cb ON fc.breed_id = cb.id
       JOIN foster_cat_colors fcc ON fc.id = fcc.cat_id
       JOIN cat_colors AS cc ON fcc.color_id = cc.id
-      GROUP BY fc.id, fc.name, asr.sex, cb.breed, fc.birth_date;
+      GROUP BY fc.id, fc.set_id, fc.name, asr.sex, cb.breed, fc.birth_date;
     SQL
   end
 

@@ -50,14 +50,14 @@ class FosterCatsController < ApplicationController
   end
 
   def set_form_fields_and_resources
-    @form_fields = VwFosterCat.columns.map(&:name).reject { |field| [ "id", "sex", "breed", "colors" ].include?(field) }
+    @form_fields = VwFosterCat.columns.map(&:name).reject { |field| [ "id", "set_id", "sex", "breed", "colors" ].include?(field) }
     @animal_sexes = AnimalSex.all
     @cat_breeds = CatBreed.all
     @cat_colors = CatColor.all.presence || []
   end
 
   def foster_cat_params
-    permitted_params = params.require(:foster_cat).permit(:name, :birth_date, :sex_id, :sex, :breed_id, :breed, foster_cat_colors: [])
+    permitted_params = params.require(:foster_cat).permit(:set_id, :name, :birth_date, :sex_id, :sex, :breed_id, :breed, foster_cat_colors: [])
 
     permitted_params[:sex_id] = permitted_params.delete(:sex) if permitted_params[:sex]
     permitted_params[:breed_id] = permitted_params.delete(:breed) if permitted_params[:breed]

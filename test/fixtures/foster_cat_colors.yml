@@ -1,9 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  cat_id: 1
-  color_id: 1
+# Tucker is black and white
+tucker_black:
+  cat_id: 1  # References foster_cats.one
+  color_id: 1 # Black
 
-two:
-  cat_id: 1
-  color_id: 6
+tucker_white:
+  cat_id: 1  # References foster_cats.one
+  color_id: 2 # White
+
+# Whiskers is gray and cream
+whiskers_gray:
+  cat_id: 2  # References foster_cats.two
+  color_id: 3 # Gray
+
+whiskers_cream:
+  cat_id: 2  # References foster_cats.two
+  color_id: 5 # Cream

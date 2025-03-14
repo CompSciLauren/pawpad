@@ -7,6 +7,7 @@
     <table class="table table-striped table-bordered">
         <thead class="thead-dark">
             <tr>
+                <th>Set</th>
                 <th>Name</th>
                 <th>Birth Date</th>
                 <th>Sex</th>
@@ -18,6 +19,7 @@
         <tbody>
             <% @foster_cats.each do |foster_cat| %>
                 <tr>
+                    <td><%= foster_cat.set_id %></td>
                     <td><%= link_to foster_cat.name, foster_cat_path(foster_cat.id) %></td>
                     <td><%= foster_cat.birth_date %></td>
                     <td><%= foster_cat.sex %></td>

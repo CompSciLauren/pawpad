@@ -1,4 +1,12 @@
 <%= form_with model: foster_cat, local: true, class: "needs-validation" do |form| %>
+  <div class="mb-3">
+    <%= form.label :set_id, "Set", class: "form-label" %>
+    <%= form.number_field :set_id, class: "form-control", placeholder: "Enter set number", min: 1 %>
+    <% if @foster_cat.errors[:set_id].any? %>
+      <div class="text-danger"><%= @foster_cat.errors[:set_id].join(", ") %></div>
+    <% end %>
+  </div>
+
   <% @form_fields.each do |field| %>
     <div class="mb-3">
       <%= form.label field, class: "form-label" %>
